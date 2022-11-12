@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hirolvaso.Views.IdojarasPage"
+             Title="Időjárás">
+    
+    <VerticalStackLayout Margin="10">
+        <Image Source="{Binding KepLink}" 
+                MaximumWidthRequest="100"
+                MaximumHeightRequest="100"
+                HorizontalOptions="Start"/>
+        <HorizontalStackLayout>
+            <Label Text="{Binding Helyszin}" FontSize="24" />
+            <Label Text="{Binding Hofok, StringFormat=', {0}°'}" FontSize="24" />
+        </HorizontalStackLayout>
+        <Label Text="{Binding Leiras}" />
+        <Label Text="{Binding Min, StringFormat='Min: {0}°'}" />
+        <Label Text="{Binding Max, StringFormat='Max: {0}°'}" />
+    </VerticalStackLayout>
+</ContentPage>
