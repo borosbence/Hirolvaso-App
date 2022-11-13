@@ -10,18 +10,20 @@
         </Style>
     </ContentPage.Resources>
 
-    <VerticalStackLayout Margin="10">
+    <ScrollView Margin="10">
         <VerticalStackLayout>
-            <Label Text="{Binding Datum, StringFormat='A mai ({0}) névnapok:'}"/>
-        </VerticalStackLayout>
-        <CollectionView ItemsSource="{Binding Nevek}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Label Text="{Binding Path=.}"/>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-        <Label Text="{Binding Idopont, StringFormat='Frissítés ideje: {0}'}"  />
-    </VerticalStackLayout>
+            <Label Text="{Binding Datum, StringFormat='A mai ({0}) névnapok:'}" 
+                   FontSize="24"
+                   FontAttributes="Bold"/>
+            <CollectionView ItemsSource="{Binding Nevek}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding Path=.}"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Label Text="{Binding Idopont, StringFormat='Frissítés ideje: {0}'}"  />
+         </VerticalStackLayout>
+    </ScrollView>
 
 </ContentPage>
