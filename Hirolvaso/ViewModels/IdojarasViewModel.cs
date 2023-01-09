@@ -11,8 +11,7 @@ namespace Hirolvaso.ViewModels
         public IdojarasViewModel()
         {
             repository = new GenericAPIRepository<Idojaras>(OldalTipus.Idojaras);
-            Task.Run(async () =>
-                await LoadDataAsync());
+            LoadDataAsync();
         }
 
         private string helyszin;

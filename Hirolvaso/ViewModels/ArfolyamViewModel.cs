@@ -15,8 +15,7 @@ namespace Hirolvaso.ViewModels
         {
             repository = new GenericAPIRepository<List<Valuta>>(OldalTipus.Arfolyam);
             Arfolyamok = new ObservableCollection<Valuta>();
-            Task.Run(async () =>
-                await LoadDataAsync());
+            LoadDataAsync();
         }
 
         private async Task LoadDataAsync()

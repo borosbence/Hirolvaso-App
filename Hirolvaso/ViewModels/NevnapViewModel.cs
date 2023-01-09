@@ -12,8 +12,7 @@ namespace Hirolvaso.ViewModels
         {
             repository = new GenericAPIRepository<Dictionary<string, List<string>>>(OldalTipus.Nevnap);
             Nevek = new ObservableCollection<string>();
-            Task.Run(async () =>
-                await LoadDataAsync());
+            LoadDataAsync();
         }
         
         public string Datum => DateTime.Now.ToString("M");

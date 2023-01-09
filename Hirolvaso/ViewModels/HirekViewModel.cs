@@ -16,8 +16,9 @@ namespace Hirolvaso.ViewModels
             repository = new GenericAPIRepository<List<Hir>>(OldalTipus.Hirek);
             Hirek = new ObservableCollection<Hir>();
             OpenLinkCommand = new AsyncRelayCommand<string>(url => OpenLink(url));
-            Task.Run(async () =>
-                await LoadDataAsync()).Wait();
+            LoadDataAsync();
+            //Task.Run(async () =>
+            //    await LoadDataAsync()).Wait();
         }
 
         private async Task LoadDataAsync()
