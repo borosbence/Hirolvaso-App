@@ -6,10 +6,10 @@ hírek:
 https://api.hvg.hu/blogservice/posts?limit=4
 
 árfolyam:
-https://telex.hu/api/exchangerate
+https://infojegyzet.hu/webszerkesztes/php/valuta/api/v1/arfolyam/
 
 időjárás:
-https://telex.hu/api/weather/Budapest
+https://api.infojegyzet.hu/idojaras/
 
 névnap:
 https://api.nevnapok.eu/

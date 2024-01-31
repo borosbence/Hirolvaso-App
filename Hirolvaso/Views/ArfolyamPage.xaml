@@ -2,27 +2,20 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Hirolvaso.Views.ArfolyamPage"
+             xmlns:vm="clr-namespace:Hirolvaso.ViewModels"
              Title="Árfolyam">
+    <ContentPage.BindingContext>
+        <vm:ArfolyamViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Resources>
         <Style TargetType="Label">
             <Setter Property="Margin" Value="0,0,10,0" />
             <Setter Property="FontSize" Value="20" />
         </Style>
     </ContentPage.Resources>
-
     <VerticalStackLayout Margin="10">
-        <CollectionView ItemsSource="{Binding Arfolyamok}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <HorizontalStackLayout>
-                        <Label Text="{Binding Currency}"/>
-                        <Label Text="{Binding Rate, StringFormat='{0} Ft'}"/>
-                        <Label Text="{Binding Symbol}"/>
-                    </HorizontalStackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-        <Label Text="{Binding Idopont, StringFormat='Frissítés ideje: {0}'}"  />
+        <Label Text="{Binding Euro, StringFormat='1€ (EUR) = {0} Ft'}"/>
+        <Label Text="{Binding Dollar, StringFormat='1$ (USD) = {0} Ft'}"/>
+        <Label Text="{Binding Idopont, StringFormat='Frissítés dátuma: {0}'}"/>
     </VerticalStackLayout>
-   
 </ContentPage>

@@ -15,29 +15,20 @@ namespace Hirolvaso.ViewModels
         {
             repository = new GenericAPIRepository<Hatterkep>(OldalTipus.Hatterkep);
             LoadDataAsync();
-            //Task.Run(async () =>
-            //    await LoadDataAsync());
         }
 
-        private string kepLink;
+        private string _kepLink;
         public string KepLink
         {
-            get { return kepLink; }
-            set { SetProperty(ref kepLink, value); }
+            get { return _kepLink; }
+            set { SetProperty(ref _kepLink, value); }
         }
 
-        private string szerzoiJog;
+        private string _szerzoiJog;
         public string SzerzoiJog
         {
-            get { return szerzoiJog; }
-            set { SetProperty(ref szerzoiJog, value); }
-        }
-
-        private string cim;
-        public string Cim
-        {
-            get { return cim; }
-            set { SetProperty(ref cim, value); }
+            get { return _szerzoiJog; }
+            set { SetProperty(ref _szerzoiJog, value); }
         }
 
         private async Task LoadDataAsync()
@@ -55,8 +46,7 @@ namespace Hirolvaso.ViewModels
             }
             // string resolution = $"_{DeviceDisplay.Current.MainDisplayInfo.Width}x{DeviceDisplay.Current.MainDisplayInfo.Height}.jpg";
             // KepLink = URL_BASE + kep.Urlbase + felbontas;
-            SzerzoiJog = model.Images.First().Ccopyright;
-            Cim = model.Images.First().Title;
+            SzerzoiJog = model.Images.First().Copyright;
         }
     }
 }

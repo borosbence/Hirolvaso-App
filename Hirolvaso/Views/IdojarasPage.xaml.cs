@@ -1,12 +1,9 @@
-using Hirolvaso.ViewModels;
-
 namespace Hirolvaso.Views;
 
 public partial class IdojarasPage : ContentPage
 {
-    public IdojarasPage(IdojarasViewModel viewModel)
+    public IdojarasPage()
     {
-        BindingContext = viewModel;
         InitializeComponent();
     }
 }

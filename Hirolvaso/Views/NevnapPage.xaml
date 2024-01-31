@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Hirolvaso.ViewModels"
              x:Class="Hirolvaso.Views.NevnapPage"
              Title="Névnap">
+    <ContentPage.BindingContext>
+        <vm:NevnapViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Resources>
         <Style TargetType="Label">
             <Setter Property="Margin" Value="0,0,10,0" />
@@ -22,8 +26,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Label Text="{Binding Idopont, StringFormat='Frissítés ideje: {0}'}"  />
-         </VerticalStackLayout>
+        </VerticalStackLayout>
     </ScrollView>
 
 </ContentPage>

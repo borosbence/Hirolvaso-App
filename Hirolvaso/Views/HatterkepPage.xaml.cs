@@ -1,12 +1,9 @@
-using Hirolvaso.ViewModels;
-
 namespace Hirolvaso.Views;
 
 public partial class HatterkepPage : ContentPage
 {
-    public HatterkepPage(HatterkepViewModel viewModel)
+    public HatterkepPage()
     {
-        BindingContext = viewModel;
         InitializeComponent();
     }
 }

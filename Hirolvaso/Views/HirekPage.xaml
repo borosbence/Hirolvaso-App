@@ -4,7 +4,9 @@
              xmlns:vm="clr-namespace:Hirolvaso.ViewModels"
              x:Class="Hirolvaso.Views.HirekPage"
              Title="Hírek">
-
+    <ContentPage.BindingContext>
+        <vm:HirekViewModel/>
+    </ContentPage.BindingContext>
     <ListView ItemsSource="{Binding Hirek}">
         <ListView.ItemTemplate>
             <DataTemplate>

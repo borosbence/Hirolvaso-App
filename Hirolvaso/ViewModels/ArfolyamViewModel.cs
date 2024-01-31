@@ -1,31 +1,46 @@
-﻿using Hirolvaso.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Hirolvaso.Models;
 using Hirolvaso.Repositories;
-using System.Collections.ObjectModel;
 
 namespace Hirolvaso.ViewModels
 {
-    public class ArfolyamViewModel
+    public class ArfolyamViewModel : ObservableObject
     {
-        private readonly GenericAPIRepository<List<Valuta>> repository;
-        public ObservableCollection<Valuta> Arfolyamok { get; set; }
-
-        public string Idopont => DateTime.Now.ToString("HH:mm:ss");
+        private readonly GenericAPIRepository<Arfolyam> repository;
 
         public ArfolyamViewModel()
         {
-            repository = new GenericAPIRepository<List<Valuta>>(OldalTipus.Arfolyam);
-            Arfolyamok = new ObservableCollection<Valuta>();
+            repository = new GenericAPIRepository<Arfolyam>(OldalTipus.Arfolyam);
             LoadDataAsync();
+        }
+
+        private DateOnly _idopont;
+        public DateOnly Idopont
+        {
+            get { return _idopont; }
+            set { SetProperty(ref _idopont, value); }
+        }
+
+        private double _euro;
+        public double Euro
+        {
+            get { return _euro; }
+            set { SetProperty(ref _euro, value); }
+        }
+
+        private double _dollar;
+        public double Dollar
+        {
+            get { return _dollar; }
+            set { SetProperty(ref _dollar, value); }
         }
 
         private async Task LoadDataAsync()
         {
-            Arfolyamok.Clear();
             var response = await repository.GetValueAsync();
-            foreach (var item in response)
-            {
-                Arfolyamok.Add(item);
-            }
+            Idopont = response.Date;
+            Euro = Math.Round(response.Rates["HUF"], 2);
+            Dollar = Math.Round(Euro * response.Rates["USD"], 2);
         }
     }
 }

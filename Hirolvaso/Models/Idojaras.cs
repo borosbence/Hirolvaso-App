@@ -1,12 +1,27 @@
 ﻿namespace Hirolvaso.Models
 {
-    public class Idojaras
+    public partial class Idojaras
     {
-        public string Location { get; set; }
-        public string Description { get; set; }
+        public Location Location { get; set; }
+        public Current Current { get; set; }
+    }
+
+    public class Condition
+    {
         public string Icon { get; set; }
-        public int Temperature { get; set; }
-        public int Min { get; set; }
-        public int Max { get; set; }
+    }
+
+    public class Location
+    {
+        public string Name { get; set; }
+    }
+
+    public partial class Current
+    {
+        public string Last_Updated { get; set; }
+        public double Temp_C { get; set; }
+        public Condition Condition { get; set; }
+        public double Wind_Kph { get; set; }
+        public int Humidity { get; set; }
     }
 }

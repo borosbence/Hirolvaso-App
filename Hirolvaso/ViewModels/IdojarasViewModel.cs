@@ -21,13 +21,6 @@ namespace Hirolvaso.ViewModels
             set { SetProperty(ref helyszin, value); }
         }
 
-        private string leiras;
-        public string Leiras
-        {
-            get { return leiras; }
-            set { SetProperty(ref leiras, value); }
-        }
-
         private string keplink;
         public string KepLink
         {
@@ -35,43 +28,43 @@ namespace Hirolvaso.ViewModels
             set { SetProperty(ref keplink, value); }
         }
 
-        private int hofok;
-        public int Hofok
+        private double _celsius;
+        public double Celsius
         {
-            get { return hofok; }
-            set { SetProperty(ref hofok, value); }
+            get { return _celsius; }
+            set { SetProperty(ref _celsius, value); }
         }
 
-        private int min;
-        public int Min
+        private double _szelsebesseg;
+        public double Szelsebesseg
         {
-            get { return min; }
-            set { SetProperty(ref min, value); }
+            get { return _szelsebesseg; }
+            set { SetProperty(ref _szelsebesseg, value); }
         }
 
-        private int max;
-        public int Max
+        private int _paratartalom;
+        public int Paratartalom
         {
-            get { return max; }
-            set { SetProperty(ref max, value); }
+            get { return _paratartalom; }
+            set { SetProperty(ref _paratartalom, value); }
         }
 
-        private bool isRefreshing;
-        public bool IsRefreshing
+        private DateTime _idopont;
+        public DateTime Idopont
         {
-            get { return isRefreshing; }
-            set { SetProperty(ref isRefreshing, value); }
+            get { return _idopont; }
+            set { SetProperty(ref _idopont, value); }
         }
 
         private async Task LoadDataAsync()
         {
             Idojaras model = await repository.GetValueAsync();
-            Helyszin = model.Location;
-            Leiras = model.Description;
-            KepLink = "http://openweathermap.org/img/wn/" + model.Icon + "@2x.png";
-            Hofok = model.Temperature;
-            Min = model.Min;
-            Max = model.Max;
+            Helyszin = model.Location.Name;
+            KepLink = "https:" + model.Current.Condition.Icon;
+            Celsius = model.Current.Temp_C;
+            Paratartalom = model.Current.Humidity;
+            Szelsebesseg = model.Current.Wind_Kph;
+            Idopont = DateTime.Parse(model.Current.Last_Updated);
         }
     }
 }
