@@ -7,11 +7,10 @@ namespace Hirolvaso.ViewModels
     public class ArfolyamViewModel : ObservableObject
     {
         private readonly GenericAPIRepository<Arfolyam> repository;
-
         public ArfolyamViewModel()
         {
             repository = new GenericAPIRepository<Arfolyam>(OldalTipus.Arfolyam);
-            LoadDataAsync();
+            _= LoadDataAsync();
         }
 
         private DateOnly _idopont;
@@ -40,7 +39,7 @@ namespace Hirolvaso.ViewModels
             var response = await repository.GetValueAsync();
             Idopont = response.Date;
             Euro = Math.Round(response.Rates["HUF"], 2);
-            Dollar = Math.Round(Euro * response.Rates["USD"], 2);
+            Dollar = Math.Round(Euro / response.Rates["USD"], 2);
         }
     }
 }

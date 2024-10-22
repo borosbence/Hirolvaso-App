@@ -20,20 +20,17 @@ namespace Hirolvaso.Repositories
         private const string NEVNAP_PATH = "https://api.nevnapok.eu/ma";
 
         private readonly string url;
-        // static --> 1 példány készül belőle
-
-        // Lejárt SSL tanúsítványok esetén, figyelmen kívül hagyás (1)
-        private static HttpClientHandler handler = new HttpClientHandler();
-        private static readonly HttpClient httpClient = new HttpClient(handler);
-
-        // Nem lejárt SSL tanúsítványok esetén: 
-        // private static readonly HttpClient httpClient = new HttpClient();
+        private readonly HttpClient httpClient;
 
         public GenericAPIRepository(OldalTipus tipus)
         {
+            // Nem lejárt SSL tanúsítványok esetén:
+            httpClient = new();
+            // Lejárt SSL tanúsítványok esetén, figyelmen kívül hagyás 
+            // HttpClientHandler handler = new();
+            // httpClient = new(handler);
+            // handler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
             url = string.Empty;
-            // Lejárt SSL tanúsítványok esetén, figyelmen kívül hagyás (2)
-            handler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
             switch (tipus)
             {
                 case OldalTipus.Arfolyam:

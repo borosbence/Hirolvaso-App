@@ -6,7 +6,7 @@ namespace Hirolvaso.ViewModels
 {
     public class HatterkepViewModel : ObservableObject
     {
-        private const string URL_BASE = "https://www.bing.com/";
+        private const string URL_BASE = "https://www.bing.com";
         private const string DESKTOP_RESOLUTION = "_1920x1080.jpg";
         private const string MOBILE_RESOLUTION = "_720x1280.jpg";
         private readonly GenericAPIRepository<Hatterkep> repository;
@@ -14,7 +14,7 @@ namespace Hirolvaso.ViewModels
         public HatterkepViewModel()
         {
             repository = new GenericAPIRepository<Hatterkep>(OldalTipus.Hatterkep);
-            LoadDataAsync();
+            _= LoadDataAsync();
         }
 
         private string _kepLink;
